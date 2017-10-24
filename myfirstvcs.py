@@ -6,4 +6,7 @@ if a == 'Rama':
 
 else:
     print" Welcome a even though if you rae not a ram"
-        
+       
+
+print " THis is the end of program"
+
