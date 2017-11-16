@@ -3,6 +3,7 @@
   user: ec2-user
   sudo: yes
  
-tasks:
-- name: install mysql
-  shell: yum install mysql 
+  tasks:
+  - name: install mysql
+    shell: yum install mysql  -y
+ 
