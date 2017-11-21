@@ -1,0 +1,39 @@
+---
+- hosts: tag_Name_xyzproduct_webserver_{{ env }}
+  remote_user: ec2-user
+  #become_user: ec2-user
+  become: yes
+  gather_facts: false
+  vars:
+   version: 1.0
+   artifactory_url:  http://nexus-1401409183.us-east-1.elb.amazonaws.com/nexus
+   tomcat8_path: /usr/share/tomcat8
+   tomcat_service: tomcat8
+ 
+  tasks:
+  #- name: install jdk
+  #  shell: yum install *jdk* -y 
+  - name: Install tomcat
+    shell: yum install tomcat8  -y
+
+  - name: start {{ tomcat_service }}
+    service: name={{ tomcat_service }} state=running
+
+  - name: stop tomcat
+    service: name={{ tomcat_service }} state=stopped
+
+  - name: Download WAR to server
+    command: wget {{ artifactory_url }}/service/local/repositories/releases/content/test/helloworld/1.0/helloworld-{{ version }}.war
+  - name: Move war to webapp
+    shell: mv helloworld-1.0.war {{ tomcat8_path }}/webapps/
+  - name: chnage owner of {{ tomcat8_path }} to tomcat
+    shell: chown -R tomcat:tomcat  {{ tomcat8_path }}
+    notify:
+        - restart tomcat8
+  handlers:
+    - name: restart tomcat8
+      service: name={{ tomcat_service }} state=restarted
+   
+
+  
+  
