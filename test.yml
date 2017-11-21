@@ -2,7 +2,7 @@
 - hosts: tag_Name_xyzproduct_webserver_{{ env }}
   connection: local
   user: ec2-user
-  become_user: yes
+  become: true
  
   tasks:
   - name: install mysql
