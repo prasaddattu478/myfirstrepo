@@ -2,6 +2,7 @@
 - hosts: tag_Name_xyzproduct_webserver_{{ env }}
   connection: local
   remote_user: ec2-user
+  become: true
   become_user: ec2-user
   gather_facts: false
  
