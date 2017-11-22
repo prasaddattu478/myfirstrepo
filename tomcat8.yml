@@ -23,7 +23,7 @@
     service: name={{ tomcat_service }} state=stopped
 
   - name: Download WAR to server
-    command: wget {{ artifactory_url }}/service/local/repositories/releases/content/test/helloworld/1.0/helloworld-{{ version }}.war
+    command: wget {{ artifactory_url }}/content/repositories/releases/test/helloworld/1.0/helloworld-{{ version }}.war
   - name: Move war to webapp
     shell: mv helloworld-1.0.war {{ tomcat8_path }}/webapps/
   - name: chnage owner of {{ tomcat8_path }} to tomcat
