@@ -26,7 +26,7 @@
     #command: wget {{ artifactory_url }}/content/repositories/releases/test/helloworld/1.0/helloworld-{{ version }}.war
     command: wget http://nexus-1401409183.us-east-1.elb.amazonaws.com/nexus/content/repositories/releases/test/helloworld/4.0/helloworld-4.0.war
   - name: Move war to webapp
-    shell: mv helloworld-1.0.war {{ tomcat8_path }}/webapps/
+    shell: mv helloworld-{{ version }}.war {{ tomcat8_path }}/webapps/
   - name: chnage owner of {{ tomcat8_path }} to tomcat
     shell: chown -R tomcat:tomcat  {{ tomcat8_path }}
     notify:
