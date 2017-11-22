@@ -23,7 +23,7 @@
     service: name={{ tomcat_service }} state=stopped
 
   - name: Download WAR to server
-    command: wget {{ artifactory_url }}/content/repositories/releases/test/helloworld/1.0/helloworld-{{ version }}.war
+    command: wget {{ artifactory_url }}/content/repositories/releases/test/helloworld/{{ version }}/helloworld-{{ version }}.war
     #command: wget http://nexus-1401409183.us-east-1.elb.amazonaws.com/nexus/content/repositories/releases/test/helloworld/4.0/helloworld-4.0.war
   - name: Move war to webapp
     shell: mv helloworld-{{ version }}.war {{ tomcat8_path }}/webapps/
