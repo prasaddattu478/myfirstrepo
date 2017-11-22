@@ -5,7 +5,7 @@
   become: yes
   gather_facts: false
   vars:
-   version: 1.0
+   version: 4.0
    artifactory_url:  http://nexus-1401409183.us-east-1.elb.amazonaws.com/nexus
    tomcat8_path: /usr/share/tomcat8
    tomcat_service: tomcat8
